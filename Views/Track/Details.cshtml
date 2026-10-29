@@ -1,0 +1,26 @@
+@model wt_lab4_4mvc_ivanov.Models.Track
+
+@{
+    ViewData["Title"] = "Информация о треке";
+    var album = ViewBag.Album as wt_lab4_4mvc_ivanov.Models.Album;
+}
+
+<div class="container mt-5">
+    <div class="card shadow border-0 rounded-4">
+        <div class="card-header bg-dark text-white">
+            <h2 class="mb-0">@Model.Title</h2>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush mb-3">
+                <li class="list-group-item"><strong>ID трека:</strong> @Model.Id</li>
+                <li class="list-group-item"><strong>Исполнитель:</strong> @Model.ArtistName</li>
+                <li class="list-group-item"><strong>Длительность:</strong> @Model.DurationSeconds секунд</li>
+                <li class="list-group-item">
+                    <strong>Альбом:</strong> 
+                    @(album != null ? $"{album.Title} ({album.Year})" : "Неизвестен")
+                </li>
+            </ul>
+            <a asp-action="Index" class="btn btn-secondary">Назад к списку</a>
+        </div>
+    </div>
+</div>

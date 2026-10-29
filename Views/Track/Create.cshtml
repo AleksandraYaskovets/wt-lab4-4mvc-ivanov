@@ -1,0 +1,48 @@
+@model wt_lab4_4mvc_ivanov.Models.Track
+@{
+    ViewData["Title"] = "Добавление трека";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <h2 class="mb-4 text-center">Новый трек</h2>
+                    
+                    <form asp-action="Create" method="post">
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label">Название</label>
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ArtistName" class="form-label">Исполнитель</label>
+                            <input asp-for="ArtistName" class="form-control" />
+                            <span asp-validation-for="ArtistName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="DurationSeconds" class="form-label">Длительность (сек)</label>
+                            <input asp-for="DurationSeconds" type="number" class="form-control" />
+                            <span asp-validation-for="DurationSeconds" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="AlbumId" class="form-label">Альбом</label>
+                            <select asp-for="AlbumId" class="form-select" asp-items="@(new SelectList(ViewBag.Albums, "Id", "Title"))">
+                                <option value="">-- Выберите альбом --</option>
+                            </select>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">Сохранить</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary">Отмена</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
