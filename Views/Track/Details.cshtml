@@ -31,9 +31,17 @@
                         @(album != null ? $"{album.Title} ({album.Year} г.)" : "Неизвестный альбом")
                     </div>
 
-                    <a asp-action="Index" class="btn btn-dark w-100 rounded-pill py-2 mt-2">
-                        <i class="bi bi-arrow-left"></i> Вернуться в каталог
-                    </a>
+                    <div class="d-flex gap-2 mt-2">
+    <a asp-action="Index" class="btn btn-dark w-50 rounded-pill py-2">
+        <i class="bi bi-arrow-left"></i> Назад
+    </a>
+    
+    <form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="w-50" onsubmit="return confirm('Удалить этот трек?');">
+        <button type="submit" class="btn btn-danger w-100 rounded-pill py-2">
+            <i class="bi bi-trash"></i> Удалить
+        </button>
+    </form>
+</div>
                 </div>
             </div>
         </div>

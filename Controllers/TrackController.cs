@@ -56,4 +56,17 @@ public class TrackController : Controller
         ViewBag.Albums = _albums;
         return View(track); // Если ошибка валидации, вернуть форму
     }
+
+        // POST: /Track/Delete/1
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Delete(int id)
+    {
+        var track = _tracks.FirstOrDefault(t => t.Id == id);
+        if (track != null)
+        {
+            _tracks.Remove(track);
+        }
+        return RedirectToAction(nameof(Index));
+    }
 }

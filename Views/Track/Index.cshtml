@@ -50,11 +50,20 @@
                             <i class="bi bi-stopwatch"></i> @item.DurationSeconds сек.
                         </span>
                     </div>
-                    <div class="card-footer bg-white border-0 pb-4">
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary w-100 rounded-pill">
-                            Подробнее
-                        </a>
-                    </div>
+                   <div class="card-footer bg-white border-0 pb-4">
+    <div class="d-flex gap-2">
+        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary w-50 rounded-pill">
+            Подробнее
+        </a>
+        
+        <!-- Форма для удаления (обязательно через POST) -->
+        <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="w-50" onsubmit="return confirm('Вы уверены, что хотите удалить этот трек?');">
+            <button type="submit" class="btn btn-outline-danger w-100 rounded-pill">
+                <i class="bi bi-trash"></i> Удалить
+            </button>
+        </form>
+    </div>
+</div>
                 </div>
             </div>
         }
